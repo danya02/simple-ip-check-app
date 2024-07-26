@@ -44,4 +44,7 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="reload">Reload</string>
+    <string name="interface_name_error">(interface name not loaded yet)</string>
+    <string name="ip_addr_error">(IP address not known yet)</string>
+    <string name="tap_to_copy">Tap to copy</string>
 </resources>

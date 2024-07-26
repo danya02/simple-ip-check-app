@@ -54,6 +54,12 @@ dependencies {
     implementation(libs.androidx.navigation.ui.ktx)
 
 //    implementation(libs.androidx.material)
+    implementation(libs.androidx.swiperefreshlayout)
+    implementation(libs.androidx.legacy.support.v4)
+    implementation(libs.androidx.recyclerview)
+    implementation(libs.kotlinx.coroutines.android)
+
+
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

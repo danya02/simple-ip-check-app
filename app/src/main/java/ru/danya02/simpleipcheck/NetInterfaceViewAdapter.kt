@@ -10,7 +10,7 @@ import androidx.appcompat.widget.AppCompatImageButton
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 
-class NetInterfaceViewAdapter(private val netInterfaces: List<NetInterface>) :
+class NetInterfaceViewAdapter(var netInterfaces: List<NetInterface>) :
     RecyclerView.Adapter<NetInterfaceViewAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

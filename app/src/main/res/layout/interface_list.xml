@@ -1,0 +1,13 @@
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/interfaceScrollFragmentView"
+    android:name="ru.danya02.simpleipcheck.InterfacesScroll">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/interfaceRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </androidx.recyclerview.widget.RecyclerView>
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
