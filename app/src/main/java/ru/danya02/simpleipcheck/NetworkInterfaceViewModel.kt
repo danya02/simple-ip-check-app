@@ -1,6 +1,5 @@
 package ru.danya02.simpleipcheck
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.Dispatchers
@@ -51,8 +50,8 @@ class NetworkInterfaceViewModel : ViewModel() {
 //        Thread.sleep(5000L)
 //        Log.w("111", "Refreshing before icanhazip.com")
 
-            var newIfaces = ifaces.toMutableList()
-            var ip = "(error while loading)"
+            val newIfaces = ifaces.toMutableList()
+            var ip: String
             try {
                 val url = URL("https://icanhazip.com")
                 val con = url.openConnection() as HttpsURLConnection

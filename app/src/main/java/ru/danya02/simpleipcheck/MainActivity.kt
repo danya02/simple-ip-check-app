@@ -3,17 +3,11 @@ package ru.danya02.simpleipcheck
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
-import androidx.annotation.UiThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 import ru.danya02.simpleipcheck.databinding.ActivityMainBinding
 import java.net.NetworkInterface
 import java.util.concurrent.ExecutorService
