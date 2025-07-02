@@ -1,5 +1,6 @@
 package ru.danya02.simpleipcheck
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.Dispatchers
@@ -13,6 +14,8 @@ class NetworkInterfaceViewModel : ViewModel() {
     fun getInterfaces(): List<NetInterface> {
         return netInterfaces.value!!.toList()
     }
+
+    private val TAG = "NetworkInterfaceViewModel"
 
     val netInterfaces = MutableLiveData<MutableList<NetInterface>>(mutableListOf())
 
@@ -31,6 +34,7 @@ class NetworkInterfaceViewModel : ViewModel() {
 //        Log.w("111", "Refreshing before getNetworkInterfaces")
 
 
+            Log.i(TAG, "Starting native getNetworkInterfaces")
             val rawIfaces = runInterruptible { NetworkInterface.getNetworkInterfaces() }
             for (item in rawIfaces) {
                 val addresses = runInterruptible { item.inetAddresses }
@@ -42,6 +46,7 @@ class NetworkInterfaceViewModel : ViewModel() {
                     ifaces.add(NetInterface(item.name, ip))
                 }
             }
+            Log.i(TAG, "Finished native getNetworkInterfaces")
 
             netInterfaces.postValue(ifaces)
 
@@ -66,6 +71,7 @@ class NetworkInterfaceViewModel : ViewModel() {
 
             newIfaces[0] = NetInterface("External IP", ip)
 
+            Log.i(TAG, "Finished icanhazip.com, posting newIfaces")
             netInterfaces.postValue(newIfaces)
             showIsRefreshing.postValue(false)
 
