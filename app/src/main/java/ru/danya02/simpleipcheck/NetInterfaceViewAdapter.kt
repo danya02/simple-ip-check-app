@@ -36,7 +36,7 @@ class NetInterfaceViewAdapter(var netInterfaces: List<NetInterface>) :
             // Copy to clipboard
             val clipboard =
                 it.context.getSystemService(CLIPBOARD_SERVICE) as android.content.ClipboardManager
-            val clip = android.content.ClipData.newPlainText("simpleipcheck", netInterface.address)
+            val clip = android.content.ClipData.newPlainText(netInterface.address, netInterface.address)
             clipboard.setPrimaryClip(clip)
 
             // Snackbar show

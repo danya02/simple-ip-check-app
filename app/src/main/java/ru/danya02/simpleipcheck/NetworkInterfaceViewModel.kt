@@ -16,9 +16,9 @@ class NetworkInterfaceViewModel : ViewModel() {
 
     val netInterfaces = MutableLiveData<MutableList<NetInterface>>(mutableListOf())
 
-    val showIsRefreshing = MutableLiveData<Boolean>(false)
+    val showIsRefreshing = MutableLiveData(false)
 
-    val requestRefresh = MutableLiveData<Boolean>(false)
+    val requestRefresh = MutableLiveData(false)
 
     suspend fun refreshInterfaces() {
         return withContext(Dispatchers.IO) {

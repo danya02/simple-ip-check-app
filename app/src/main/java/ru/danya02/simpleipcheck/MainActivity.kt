@@ -53,6 +53,7 @@ class MainActivity : AppCompatActivity() {
 
         lifecycleScope.launch(BACKGROUND.asCoroutineDispatcher()) {
             viewModel.refreshInterfaces()
+            Thread.sleep(10000L)
             Snackbar.make(binding.fab, "Refreshed", Snackbar.LENGTH_SHORT).show()
             viewModel.requestRefresh.postValue(false)
         }

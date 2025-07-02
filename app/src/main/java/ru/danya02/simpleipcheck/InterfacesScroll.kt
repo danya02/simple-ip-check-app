@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -21,10 +20,6 @@ class InterfacesScroll : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private val viewModel: NetworkInterfaceViewModel by activityViewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
@@ -40,7 +35,7 @@ class InterfacesScroll : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = NetInterfaceViewAdapter(viewModel.getInterfaces())
 
-        viewModel.netInterfaces.observe(viewLifecycleOwner, Observer {
+        viewModel.netInterfaces.observe(viewLifecycleOwner) {
             val adapter = recyclerView.adapter
 
             if (adapter is NetInterfaceViewAdapter) {
@@ -50,11 +45,11 @@ class InterfacesScroll : Fragment() {
                     adapter.notifyDataSetChanged()
                 }
             }
-        })
+        }
 
-        viewModel.showIsRefreshing.observe(viewLifecycleOwner, Observer {
+        viewModel.showIsRefreshing.observe(viewLifecycleOwner) {
             view.isRefreshing = it
-        })
+        }
 
         view.setOnRefreshListener {
             viewModel.requestRefresh.postValue(true)
