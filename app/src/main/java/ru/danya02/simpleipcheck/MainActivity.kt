@@ -10,6 +10,7 @@ import kotlinx.coroutines.asCoroutineDispatcher
 import kotlinx.coroutines.launch
 import ru.danya02.simpleipcheck.databinding.ActivityMainBinding
 import java.net.NetworkInterface
+import java.util.Locale
 import java.util.concurrent.ExecutorService
 import java.util.concurrent.Executors
 
@@ -52,8 +53,13 @@ class MainActivity : AppCompatActivity() {
 //                    Log.w(TAG, "Refreshing")
 
         lifecycleScope.launch(BACKGROUND.asCoroutineDispatcher()) {
+            val startTime = System.nanoTime()
             viewModel.refreshInterfaces()
-            Snackbar.make(binding.fab, "Refreshed", Snackbar.LENGTH_SHORT).show()
+            val endTime = System.nanoTime()
+            // format for humans in ms
+            val roundedMs = ((endTime - startTime) / 1000000.0)
+            val roundedMsStr = String.format(Locale.ROOT, "%.2f", roundedMs)
+            Snackbar.make(binding.fab, "Refreshed in $roundedMsStr ms", Snackbar.LENGTH_SHORT).show()
             viewModel.requestRefresh.postValue(false)
         }
     }
